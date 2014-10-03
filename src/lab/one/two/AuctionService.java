@@ -1,4 +1,4 @@
-package exercises.two;
+package lab.one.two;
 
 public interface AuctionService {
 	public Auction[] search(String criteria);

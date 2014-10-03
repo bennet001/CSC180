@@ -20,7 +20,7 @@ public class Auction {
         }
         if (obj == null) {
             return false;
-        } else if(Integer.parseInt(obj.toString()) >= 0){
+        } else if(obj.getClass() == Integer.class && Integer.parseInt(obj.toString()) >= 0) {
         	return this.get_Id() == Integer.parseInt(obj.toString());
         }
 

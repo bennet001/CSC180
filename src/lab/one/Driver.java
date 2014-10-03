@@ -1,4 +1,6 @@
-package exercises.two;
+package lab.one;
+
+import exercises.two.InMemoryAuctionService;
 
 public class Driver {
 
@@ -11,5 +13,4 @@ public class Driver {
 		check.bid("Calvin", 4);
 		System.out.println(check.ItemsContainer.toString());
 	}
-
 }

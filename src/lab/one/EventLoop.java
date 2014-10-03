@@ -1,5 +1,12 @@
 package lab.one;
 
-public class EventLoop {
-	public void begin(){};
+import java.util.Queue;
+
+public class EventLoop{
+	Queue<Event> incomplete;
+	Queue<Event> Complete;
+	public void begin(){
+		
+	}
 }
+

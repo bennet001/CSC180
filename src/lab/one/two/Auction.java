@@ -1,4 +1,4 @@
-package exercises.two;
+package lab.one.two;
 
 public class Auction {
 	private final int _Id;
