@@ -2,8 +2,10 @@ package lab.one.two;
 
 import java.util.ArrayList;
 
+import lab.one.two.Auction;
+
 public class InMemoryAuctionService implements AuctionService {
-	ArrayList<Auction> ItemsContainer = new ArrayList<Auction>();
+	public ArrayList<Auction> ItemsContainer = new ArrayList<Auction>();
 	public InMemoryAuctionService(){
 		Auction item1 = new Auction(001, "The odyssey", 100);
 		Auction item2 = new Auction(002, "Batman Issue #1", 35000);
@@ -14,13 +16,18 @@ public class InMemoryAuctionService implements AuctionService {
 	}
 	@Override
 	public Auction[] search(String criteria) {
-		
-		return null;
+		ArrayList<Auction> searchResult = new ArrayList<Auction>();
+		for (Auction CurrentAuctionItem : ItemsContainer) {
+			if(CurrentAuctionItem.get_Name().contains(criteria)){
+				searchResult.add(CurrentAuctionItem);
+			}
+		}
+		Auction[] container = new Auction[searchResult.size()]; 
+		return (Auction[]) searchResult.toArray(container);
 	}
 
 	@Override
-	public void bid(String username, int itemId) {
-		System.out.println();
+	public void bid(String username, Integer itemId) {
 		Auction tempItem = null;
 		for (Auction currentAucItem : ItemsContainer) {
 			if(currentAucItem.equals(itemId)){

@@ -14,19 +14,36 @@ public class Auction {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (obj == this) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        } else if(Integer.parseInt(obj.toString()) >= 0){
-        	return this.get_Id() == Integer.parseInt(obj.toString());
-        }
-
-        Auction guest = (Auction) obj;
-        return _Id == guest._Id;
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + _Id;
+		result = prime * result + ((_Name == null) ? 0 : _Name.hashCode());
+		return result;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if(Integer.class == obj.getClass()){
+			return _Id == (Integer)obj;
+		}
+		if (getClass() != obj.getClass())
+			return false;
+		Auction other = (Auction) obj;
+		if (_Id != other._Id)
+			return false;
+		if (_Name == null) {
+			if (other._Name != null)
+				return false;
+		} else if (!_Name.equals(other._Name))
+			return false;
+		return true;
+	}
+	
 	@Override
 	public String toString() {
 		if (_Owner != null) {
@@ -34,8 +51,9 @@ public class Auction {
 		} else {
 			return "\n" + this._Name + "\n" + this._CurrentBid + "\n" + this._Id;
 		}
-		
 	}
+	
+	
 
 	public int get_CurrentBid() {
 		return _CurrentBid;
@@ -67,7 +85,5 @@ public class Auction {
 
 	public int get_Id() {
 		return _Id;
-	}
-
-	
+	}	
 }
