@@ -40,7 +40,6 @@ public class InMemoryAuctionService implements AuctionService {
 	}
 	@Override
 	public Auction update(Auction auction, Integer id) {
-		int counter = 0;
 		if(auctionmodel.containsKey(id)){
 			return auctionmodel.put(id, auction);
 		}

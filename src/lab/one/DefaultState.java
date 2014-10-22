@@ -24,9 +24,11 @@ public class DefaultState implements Event {
 		String responce = scan.nextLine();
 		if (!responce.equalsIgnoreCase("Enter") && responce.length()>0){
 			_UserName = responce;
+			scan.close();
 			return;
 		}
 		else{
+			scan.close();
 			next();
 		}
 	}

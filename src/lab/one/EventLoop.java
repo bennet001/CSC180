@@ -6,64 +6,33 @@ import java.util.Queue;
 import lab.one.two.InMemoryAuctionService;
 
 public class EventLoop {
-	Queue<Event> incomplete = new LinkedList<Event>();
-	Queue<Event> Complete = new LinkedList<Event>();
+	private Queue<Event> toDo = new LinkedList<Event>();
+	private Queue<Event> complete = new LinkedList<Event>();
+	private Queue<Event> temp = new LinkedList<Event>();
 
 	private InMemoryAuctionService auctionSiteList = new InMemoryAuctionService();
 
 	public void begin() {
-		Event currentstate = new DefaultState(auctionSiteList);
-		boolean currentqueue = true;
 		while (true) {
+			Event currentstate = new DefaultState(auctionSiteList);
 			currentstate.show();
-			if (currentstate.toString() != null) {
-				if (currentqueue) {
-					incomplete.add(currentstate);
-					if (incomplete.peek() != null) {
-						incomplete.peek().show();
-					}
-					if (incomplete.peek().next() != null) {
-						incomplete.add(incomplete.poll().next());
-					}
-					if (incomplete.peek().getClass() == SearchResultsState.class) {
-						incomplete.peek().show();
-						Complete.add(incomplete.poll());
-					}
-					if (incomplete.isEmpty()) {
-						currentqueue = true;
-					}
-					currentstate = new DefaultState(auctionSiteList);
-				} else {
-					Complete.add(new DefaultState(auctionSiteList));
-					if (Complete.peek() != null) {
-						Complete.peek().show();
-					}
-					if (Complete.peek().next() != null) {
-						Complete.add(Complete.poll().next());
-					}
-					if (Complete.peek().getClass() == SearchResultsState.class) {
-						Complete.peek().show();
-						incomplete.add(incomplete.poll());
-					}
-					if (Complete.isEmpty()) {
-						currentqueue = false;
-					}
-					currentstate = new DefaultState(auctionSiteList);
+			Event s = currentstate.next();
+			if (s != null) {
+				toDo.add(s);
+			}
+			while(!toDo.isEmpty()){
+				if ((!toDo.isEmpty())) {
+					toDo.peek().show();
+					complete.add(toDo.poll().next());
 				}
 			}
+			swap();
 		}
-		// Event tempdefault = new DefaultState();
-		// incomplete.add(tempdefault);
-		// if(!incomplete.isEmpty()){
-		// tempdefault.show();
-		// tempdefault = tempdefault.next();
-		// tempdefault = new DefaultState();
-		// if(tempdefault.toString() != null){
-		// incomplete.add(tempdefault);
-		// }
-		// }
-		// tempdefault.show();
-		// tempdefault = tempdefault.next();
-		// tempdefault.show();
+	}
+
+	private  void swap() {
+		// TODO Auto-generated method stub
+		toDo = complete;
+		complete = temp;
 	}
 }

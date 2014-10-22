@@ -2,8 +2,6 @@ package lab.one.two;
 
 import java.util.ArrayList;
 
-import lab.one.two.Auction;
-
 public class InMemoryAuctionService implements AuctionService {
 	public ArrayList<Auction> ItemsContainer = new ArrayList<Auction>();
 	public InMemoryAuctionService(){

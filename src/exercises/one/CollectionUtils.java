@@ -5,7 +5,7 @@ import java.util.Collection;
 
 public class CollectionUtils {
 	public static void main(String[] args) {
-		ArrayList names = new ArrayList();
+		ArrayList names = new ArrayList<Object>();
 		names.add(null);
 		names.add(35);
 		names.add("Am");

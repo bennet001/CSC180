@@ -25,19 +25,24 @@ public class UserHomeState implements Event {
 				.println(_CurrentUser
 						+ ", what would you like to search for? (Tap enter to log out)");
 		Scanner scan = new Scanner(System.in);
-		criteria = scan.next();
+		criteria = scan.nextLine();
 		
+		scan.close();
 	}
 
 	@Override
 	public Event next() {
 		// TODO Auto-generated method stub
+		if(!criteria.isEmpty()){
 		SearchResultsState auctionlist =  new SearchResultsState(criteria,_CurrentUser, _auctionSiteList);
 		return auctionlist;
+		} else{
+			return new DefaultState(_auctionSiteList);
+		}
 	}
 	@Override
 	public String toString(){
-		return _CurrentUser;
+		return _CurrentUser + " " + criteria + " " + _auctionSiteList.toString();
 	}
 
 }

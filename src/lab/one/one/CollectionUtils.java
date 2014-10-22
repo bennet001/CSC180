@@ -1,6 +1,5 @@
 package lab.one.one;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 public class CollectionUtils {
