@@ -1,4 +1,4 @@
-package lab.one.two;
+package exercises.two;
 
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ public class InMemoryAuctionService implements AuctionService {
 	public Auction[] search(String criteria) {
 		ArrayList<Auction> searchResult = new ArrayList<Auction>();
 		for (Auction CurrentAuctionItem : ItemsContainer) {
-			if(CurrentAuctionItem.get_Name().contains(criteria)){
+			if(CurrentAuctionItem.get_Name() == criteria){
 				searchResult.add(CurrentAuctionItem);
 			}
 		}
@@ -25,7 +25,7 @@ public class InMemoryAuctionService implements AuctionService {
 	}
 
 	@Override
-	public void bid(String username, Integer itemId) {
+	public void bid(String username, int itemId) {
 		Auction tempItem = null;
 		for (Auction currentAucItem : ItemsContainer) {
 			if(currentAucItem.equals(itemId)){

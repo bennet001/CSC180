@@ -1,6 +1,6 @@
-package lab.two.one;
+package labs.two.one;
 
-import lab.two.two.Auction;
+import labs.two.two.Auction;
 
 
 public class AndPredicate implements Predicate<Auction> {

@@ -1,7 +1,7 @@
-package lab.one.two;
+package exercises.two;
 
 public interface AuctionService {
 	public Auction[] search(String criteria);
 	
-	public void bid(String username, Integer itemId);
+	public void bid(String username, int itemId);
 }
