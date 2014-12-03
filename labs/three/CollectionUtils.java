@@ -1,4 +1,4 @@
-package lab.two.one;
+package labs.three;
 
 import java.util.ArrayList;
 import java.util.Collection;

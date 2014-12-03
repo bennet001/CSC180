@@ -1,6 +1,4 @@
-package lab.two.one;
-
-
+package labs.three;
 
 public class ContainsPredicate<T> implements Predicate<T> {
 	Object input = null;
@@ -10,7 +8,8 @@ public class ContainsPredicate<T> implements Predicate<T> {
 	
 	@Override
 	public boolean evaluate(T t) {
-		return t.toString().contains(input.toString());
+		boolean eval = t.toString().contains(input.toString());
+		return eval;
 	}
 	@Override
 	public void setFirstNeed(Predicate firstNeed) {	

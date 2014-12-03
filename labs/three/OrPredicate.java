@@ -1,6 +1,4 @@
-package lab.two.one;
-
-import lab.two.two.Auction;
+package labs.three;
 
 
 public class OrPredicate implements Predicate<Auction> {

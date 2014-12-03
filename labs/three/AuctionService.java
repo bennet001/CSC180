@@ -1,19 +1,20 @@
-package lab.two.two;
+package labs.three;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public interface AuctionService {
-	static Map<Integer,Auction> auctionmodel = new HashMap<Integer,Auction>();
-	public Auction[] search(String criteria);
-	
-	public void bid(String username, Integer itemId);
+	static Map<Long,Auction> auctionmodel = new HashMap<Long,Auction>();
+	public Collection<Auction> search(String criteria);
+	public void bid(String username, Long itemId);
+	public void bid(String username, Long itemId, Collection<Auction> list);
 	Auction create(Auction auction);
 	
-	Auction update(Auction auction, Integer id);
+	Auction update(Auction auction, Long id);
 	
-	Auction retreive(Integer id);
+	Auction retreive(Long id);
 	
-	void delete(Integer id);
+	void delete(Long id);
 }

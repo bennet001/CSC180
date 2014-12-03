@@ -1,8 +1,7 @@
-package lab.two;
+package labs.three;
 
 import java.util.Scanner;
 
-import lab.two.two.AuctionService;
 
 
 public class DefaultState implements State {

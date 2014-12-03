@@ -1,8 +1,6 @@
-package lab.two;
+package labs.three;
 
 import java.util.Scanner;
-
-import lab.two.two.AuctionService;
 
 
 public class UserHomeState implements State {

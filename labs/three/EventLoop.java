@@ -1,20 +1,22 @@
-package lab.two;
+package labs.three;
 
 import java.util.LinkedList;
 import java.util.Queue;
-
-import lab.two.two.InMemoryAuctionService;
 
 
 public class EventLoop {
 	private Queue<State> toDo = new LinkedList<State>();
 	private Queue<State> complete = new LinkedList<State>();
 
-	private InMemoryAuctionService auctionSiteList = new InMemoryAuctionService();
+	private RAMAuctionService rr = new RAMAuctionService("Src.txt");
 
 	public void begin() {
+		while (rr.hasNext()) {
+			Auction a = rr.next();
+			AuctionService.auctionmodel.put(a.getId(), a);
+		}
 		while (true) {
-			State currentstate = new DefaultState(auctionSiteList);
+			State currentstate = new DefaultState(rr);
 			currentstate.show();
 			if (currentstate.next() != null) {
 				toDo.add(currentstate.next());

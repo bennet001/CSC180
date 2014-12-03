@@ -1,34 +1,59 @@
-package lab.two.two;
+package labs.three;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Auction {
-	private final int _Id;
-	private int _CurrentBid;
-	private String _Owner;
-	private String _Name;
-	private String _Description;
+	private final Long id;
+	private String name;
+	private String description;
+	private Double currentBid = 1.0;
+	private String creator = "";
+	private String owner = "";
+	private Integer numberOfBids = 0;
+	private Calendar endTimeMillis;
+	
 
-	public Auction(int id, String name, int currentBid) {
-		_Id = id;
-		_Name = name;
-		_CurrentBid = currentBid;
-		_Description = "";
+	public Auction(Long id, String name, Double currentBid, String userName) {
+		this.id = new Long(id);
+		this.name = name;
+		this.currentBid = currentBid;
+		this.description = "";
+		this.owner = userName;
+		this.endTimeMillis = new GregorianCalendar();
+		this.endTimeMillis.setTimeInMillis(System.currentTimeMillis() + 7 * 24 * 60 * 60 * 1000);
 	}
 
-	public Auction(int size, String productName, int productPrice,
-			String productDescription) {
+	public Auction(Long id, String productName, Double productPrice, String productDescription, String userName) {
 		// TODO Auto-generated constructor stub
-		_Id = size;
-		_Name = productName;
-		_CurrentBid = productPrice;
-		_Description = productDescription + " ";
+		this.id = new Long(id);
+		this.name = productName;
+		this.currentBid = productPrice;
+		this.description = productDescription;
+		this.owner = userName;
+		this.endTimeMillis = new GregorianCalendar();
+		this.endTimeMillis.setTimeInMillis(System.currentTimeMillis() + 7 * 24 * 60 * 60 * 1000);
+	}
+
+	public Auction(Long id, String productName, String description, Double currentBid, String currentOwner, Integer numberOfBids, Long endTimeMillis) {
+		this.id = id;
+		this.name = productName;
+		this.currentBid = currentBid;
+		this.description = description;
+		this.owner = currentOwner;
+		this.numberOfBids = numberOfBids;
+		this.endTimeMillis = new GregorianCalendar();
+		this.endTimeMillis.setTimeInMillis(endTimeMillis);
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + _Id;
-		result = prime * result + ((_Name == null) ? 0 : _Name.hashCode());
+		result = (int) (prime * result + id);
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
 
@@ -38,62 +63,83 @@ public class Auction {
 			return true;
 		if (obj == null)
 			return false;
-		if(Integer.class == obj.getClass()){
-			return _Id == (Integer)obj;
+		if (Long.class == obj.getClass()) {
+			return id.equals(obj);
 		}
 		if (getClass() != obj.getClass())
 			return false;
 		Auction other = (Auction) obj;
-		if (_Id != other._Id)
+		if (id != other.id)
 			return false;
-		if (_Name == null) {
-			if (other._Name != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!_Name.equals(other._Name))
+		} else if (!name.equals(other.name))
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
-		if (_Owner != null) {
-			return this._Name + " " + this._Description + this._CurrentBid + " " + this._Owner + " " + this._Id;
-		} else {
-			return this._Name + " " + this._Description + this._CurrentBid + " " + this._Id;
-		}
-	}
-	
-	
-
-	public int getCurrentBid() {
-		return _CurrentBid;
+		return String.format("%-12s, %-85s, %-11s, %-10s, %-10s, %-10s", this.id,
+				this.name + " " + this.description, this.currentBid, this.numberOfBids, this.owner,
+				endTimeMillis.getTime());
 	}
 
-	public void setCurrentBid(int _CurrentBid) {
-		this._CurrentBid = _CurrentBid;
+	public Double getCurrentBid() {
+		return currentBid;
+	}
+
+	public void setCurrentBid(Double _CurrentBid) {
+		this.currentBid = _CurrentBid;
 	}
 
 	public String getOwner() {
-		return _Owner;
+		return owner;
 	}
 
 	public void setOwner(String _Owner) {
-		this._Owner = _Owner;
+		this.owner = _Owner;
 	}
+
 	public void setName(String _Name) {
-		if(_Owner == null){
-		this._Name = _Name;
-		}
-		else{
+		if (owner == null) {
+			this.name = _Name;
+		} else {
 			System.out.println("Illegal operation.");
 		}
 	}
 
 	public String getName() {
-		return _Name;
+		return name;
 	}
 
-	public int getId() {
-		return _Id;
-	}	
+	public long getId() {
+		return id;
+	}
+
+	public Integer getNumberOfBids() {
+		return numberOfBids;
+	}
+
+	public void setNumberOfBids(Integer numberOfBids) {
+		this.numberOfBids = numberOfBids;
+	}
+
+	public Calendar getEndTimeMillis() {
+		return endTimeMillis;
+	}
+
+	public void setEndTimeMillis(Calendar endTimeMillis) {
+		this.endTimeMillis = endTimeMillis;
+	}
+
+	public String getCreator() {
+		return creator;
+	}
+
+	public void setCreator(String creator) {
+		this.creator = creator;
+	}
+
 }

@@ -1,14 +1,12 @@
-package lab.two;
+package labs.three;
 
+import java.util.Collection;
 import java.util.Scanner;
-
-import lab.two.two.Auction;
-import lab.two.two.AuctionService;
 
 public class SearchResultsState implements State {
 	private String _search;
 	private String _UserName;
-	Auction[] output;
+	Collection<Auction> output;
 	private String input;
 	private AuctionService auctionSiteList;
 
@@ -21,12 +19,14 @@ public class SearchResultsState implements State {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		System.out.println(_UserName + ", here are your search results:\n"
+		System.out.printf(_UserName + ", here are your search results:\n"
 				+ "========================================\n"
 				+ "===          Search Results          ===\n"
-				+ "========================================");
+				+ "========================================\n"
+				+ "%-12s, %-85s, %-10s, %-10s, %-10s, %-10s\n", "ID", "Name", "Current Bid",
+				"Bid Count", "Owner", "Ends By");
 		output = auctionSiteList.search(_search);
-		if (output.length > 0) {
+		if (output.size() > 0) {
 			for (Auction auction : output) {
 				System.out.println(auction.toString());
 			}
@@ -34,7 +34,8 @@ public class SearchResultsState implements State {
 		System.out.println("========================================");
 		System.out
 				.println("Enter the item id to increase the bid by $1.\n"
-						+ "Otherwise, enter another search: (Tap enter to go back to home page)");
+						+ "Otherwise, enter another search: "
+						+ "(Tap enter to go back to home page)");
 		Scanner scan = new Scanner(System.in);
 		input = scan.nextLine();
 		
@@ -44,7 +45,7 @@ public class SearchResultsState implements State {
 	public State next() {
 		// TODO Auto-generated method stub
 		try {
-			auctionSiteList.bid(_UserName, Integer.parseInt(input));
+			auctionSiteList.bid(_UserName, Long.parseLong(input), output);
 		} catch (Exception e) {
 			// TODO: handle exception
 			_search = input;
