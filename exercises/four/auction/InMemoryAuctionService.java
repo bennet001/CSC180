@@ -1,10 +1,8 @@
 package exercises.four.auction;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import exercises.four.CollectionUtils;
-import exercises.four.Predicate;
 
 
 public class InMemoryAuctionService implements AuctionService {
@@ -20,10 +18,8 @@ public class InMemoryAuctionService implements AuctionService {
 	public Auction[] search(String criteria, CollectionUtils usable) {
 		String[] lookfor = criteria.split(" ");
 		ArrayList<Auction> searchResult = new ArrayList<Auction>();
-		Collection<Auction> ItemsContainer = auctionmodel.values();
 		for (int i = 1; i < (lookfor.length - 1); i++) {
 			if(lookfor[i].equalsIgnoreCase("AND")){
-				Predicate<String> input;
 			} else if(lookfor[i].equalsIgnoreCase("OR")){
 				
 			}

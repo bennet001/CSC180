@@ -2,9 +2,7 @@ package labs.three;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Stack;
 
 
 public class InMemoryAuctionService implements AuctionService {
@@ -47,20 +45,21 @@ public class InMemoryAuctionService implements AuctionService {
 //		return Filter(auctionmodel.values(), predicateContainer.pop());
 //	}
 	
-	private Predicate DecidePredicate(String pop) {
-		Predicate action = null;
-		switch (pop) {
-		case "AND":
-			action = new AndPredicate();
-			break;
-		case "OR":
-			action = new OrPredicate();
-			break;
-		default:
-			break;
-		}
-		return action;
-	}
+//	@SuppressWarnings("rawtypes")
+//	private Predicate DecidePredicate(String pop) {
+//		Predicate action = null;
+//		switch (pop) {
+//		case "AND":
+//			action = new AndPredicate();
+//			break;
+//		case "OR":
+//			action = new OrPredicate();
+//			break;
+//		default:
+//			break;
+//		}
+//		return action;
+//	}
 	
 	public Auction[] Filter(Collection<Auction> providedCollection, Predicate<Auction> providedPredicate) {
 		ArrayList<Auction> searchResult = new ArrayList<Auction>();

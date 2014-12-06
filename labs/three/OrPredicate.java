@@ -21,11 +21,13 @@ public class OrPredicate implements Predicate<Auction> {
 		return firstPossible.evaluate(t) || secondPossible.evaluate(t);
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void setFirstNeed(Predicate firstNeed) {
 		firstPossible = firstNeed;		
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void setSecondNeed(Predicate secondNeed) {
 		secondPossible = secondNeed;		

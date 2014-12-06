@@ -1,8 +1,8 @@
-package lab.two;
+package labs.two;
 
 import java.util.Scanner;
 
-import lab.two.two.AuctionService;
+import labs.two.two.AuctionService;
 
 
 public class UserHomeState implements State {
@@ -19,6 +19,7 @@ public class UserHomeState implements State {
 		_CurrentUser = user;
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
@@ -31,6 +32,7 @@ public class UserHomeState implements State {
 		criteria = scanner.nextLine();
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public State next() {
 		// TODO Auto-generated method stub

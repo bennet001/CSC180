@@ -1,4 +1,4 @@
-package lab.two;
+package labs.two;
 
 
 public class Driver {

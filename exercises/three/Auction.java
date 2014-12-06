@@ -95,6 +95,7 @@ public class Auction {
 		return _Id;
 	}
 
+	@SuppressWarnings("unchecked")
 	public Map<String,Object> getProperties(){
 		Map<String, Object> map = (Map<String, Object>) _Propertieslist.values();
 		return map;
@@ -104,6 +105,7 @@ public class Auction {
 		Object accuired = _Propertieslist.get(propertyName);
 		return accuired;
 	}
+	@SuppressWarnings("unchecked")
 	public <T> T getProperty(String propertyName, Class<T> propertyType){
 		return (T) _Propertieslist.get(propertyName);
 	}

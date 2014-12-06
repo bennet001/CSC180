@@ -11,6 +11,7 @@ public class Mafia {
 	public Mafia() {
 		// TODO Auto-generated constructor stub
 	}
+	@SuppressWarnings({ "resource", "deprecation" })
 	public static void main(String[] args){
 		SimpleDateFormatConverter changedate = new SimpleDateFormatConverter(new SimpleDateFormat("dd/MMM/YYYY"), new SimpleDateFormat("dd/MMM/Y"));
 		System.out.println("Please provide Birthday information. DD/MM/YYYY");

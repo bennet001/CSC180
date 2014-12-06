@@ -1,9 +1,7 @@
 package exercises.five;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,6 +27,7 @@ public class SimpleDateFormatConverterTest {
 		assertEquals(tester.getSdfparseing().getCalendar().MONTH, Calendar.MONTH);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testFormat() {
 		tester.parse("12/30/2014");

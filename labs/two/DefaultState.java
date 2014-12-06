@@ -1,8 +1,8 @@
-package lab.two;
+package labs.two;
 
 import java.util.Scanner;
 
-import lab.two.AuctionService;
+import labs.two.two.AuctionService;
 
 
 public class DefaultState implements State {
@@ -17,6 +17,7 @@ public class DefaultState implements State {
 		return _UserName;
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub

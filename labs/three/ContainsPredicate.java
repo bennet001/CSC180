@@ -11,10 +11,12 @@ public class ContainsPredicate<T> implements Predicate<T> {
 		boolean eval = t.toString().contains(input.toString());
 		return eval;
 	}
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void setFirstNeed(Predicate firstNeed) {	
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void setSecondNeed(Predicate secondNeed) {	
 	}

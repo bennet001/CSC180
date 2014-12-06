@@ -16,6 +16,7 @@ public class DefaultState implements State {
 		return _UserName;
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub

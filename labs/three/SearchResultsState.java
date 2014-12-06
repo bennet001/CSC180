@@ -16,6 +16,7 @@ public class SearchResultsState implements State {
 		auctionSiteList = list;
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub

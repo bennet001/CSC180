@@ -1,9 +1,9 @@
-package lab.two;
+package labs.two;
 
 import java.util.Scanner;
 
-import lab.two.Auction;
-import lab.two.AuctionService;
+import labs.two.two.Auction;
+import labs.two.two.AuctionService;
 
 public class SearchResultsState implements State {
 	private String _search;
@@ -18,6 +18,7 @@ public class SearchResultsState implements State {
 		auctionSiteList = list;
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub

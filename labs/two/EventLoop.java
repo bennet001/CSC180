@@ -1,9 +1,9 @@
-package lab.two;
+package labs.two;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-import lab.two.InMemoryAuctionService;
+import labs.two.two.InMemoryAuctionService;
 
 
 public class EventLoop {
